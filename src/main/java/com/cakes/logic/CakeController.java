@@ -22,6 +22,7 @@ public class CakeController {
 
     public List<recipeDTO> getRecipes() {
                 System.out.println("Brandstrup was here");
+                System.out.println("Let's try with GitDesktop!");
         return new recipeDAO().getRecipes();
     }
 }
