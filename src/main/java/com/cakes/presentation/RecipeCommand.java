@@ -31,8 +31,7 @@ public class RecipeCommand extends Command {
             throws ServletException, IOException {
 
         CakeController cc = new CakeController();
-        String name = null;
-        String recipeName = request.getParameter(name);
+        String recipeName = request.getParameter("name");
 
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -40,12 +39,14 @@ public class RecipeCommand extends Command {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Glarmesteren</title>");
+            out.println("<title>Opskrifter</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Opskrift:</h1>");
             out.println("<br><br>");
-            out.println("<li>Navn: " + cc.getRecipe("Pandekager").getName() + "</li>");
+            out.println("<li>Navn: " + cc.getRecipe(recipeName).getName() + "</li>");
+            out.println("<li>Instruktioner: " + cc.getRecipe(recipeName).getInstructions()+ "</li>");
+            out.println("<li>Ratings: " + cc.getRecipe(recipeName).getRatings()+ "</li>");
             out.println("<body>");
             out.println("</body>");
             out.println("</html>");
