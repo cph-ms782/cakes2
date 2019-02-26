@@ -21,6 +21,30 @@ public class recipeDAO {
     private List<recipeDTO> recipes = new ArrayList();
     private List<ingredientDTO> ingredients;
 
+    public recipeDTO getRecipe(String recipeName)
+    {
+        recipeDTO recipe = null;
+        String query 
+                = "SELECT *"
+                + "FROM `recipes`"
+                + "WHERE `name` = \""+recipeName+"\";";
+        try {
+            connector = new DB();
+            ResultSet rs = connector.getConnection().createStatement().executeQuery(query);
+            while (rs.next()) {
+                recipe = new recipeDTO(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("instructions"),
+                        rs.getString("ratings")
+                );
+            }
+        } catch (SQLException ex) {
+
+        }
+        return recipe;
+    }
+    
     public List<recipeDTO> getRecipes() {
 
         String query = "SELECT * FROM `recipes`;";
