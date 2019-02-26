@@ -59,14 +59,15 @@ public class RecipesCommand extends Command {
             out.println("<h1>Opskrifter:</h1>");
             out.println("<br><br>");
             for (recipeDTO recipe : cc.getRecipes()) {
-                out.println("<h1> Antal kager " + antalkager + "</h1><br>");
-                out.println("<h1>" + recipe.getName() + "</h1><br>"
-                        + "<h3>" + recipe.getInstructions() + "</h3><br>");
-                for (ingredientDTO ingr : recipe.getIngredients()) {
-                    out.println("<br><li>" + ingr.getAmount() + " " + ingr.getIngredient() + "</li><br>");
+                if (antalkager == null || antalkager.equals(recipe.getName())) {
+                    out.println("<h1>" + recipe.getName() + "</h1><br>"
+                            + "<h3>" + recipe.getInstructions() + "</h3><br>");
+                    for (ingredientDTO ingr : recipe.getIngredients()) {
+                        out.println("<br><li>" + ingr.getAmount() + " " + ingr.getIngredient() + "</li><br>");
+                    }
+                    String urle = "<img src=\"" + recipe.getImage().getImage() + "\"  width=\"250\"/>";
+                    out.println(urle);
                 }
-                
-                out.println("<img src=\"sorbet.jpg\">");
             }
             out.println("<body>");
             out.println("</body>");

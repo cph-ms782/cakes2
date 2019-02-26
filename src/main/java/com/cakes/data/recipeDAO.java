@@ -38,7 +38,8 @@ public class recipeDAO {
                         rs.getString("name"),
                         rs.getString("instructions"),
                         rs.getString("ratings"),
-                        ingredients
+                        ingredients,
+                        new imageDTO("",1)
                 );
             }
         } catch (SQLException ex) {
@@ -49,7 +50,7 @@ public class recipeDAO {
     
     public List<recipeDTO> getRecipes() {
 
-        String query = "SELECT * FROM `recipes`;";
+        String query = "SELECT * FROM `recipes` INNER JOIN `images` ON `recipes`.`id` = `images`.`recipe_id`;";
 
         try {
             connector = new DB();
@@ -76,7 +77,8 @@ public class recipeDAO {
                         rs.getString("name"),
                         rs.getString("instructions"),
                         rs.getString("ratings"),
-                        ingredients
+                        ingredients,
+                        new imageDTO(rs.getString("image"),rs.getInt("id"))
                 ));
             }
         } catch (SQLException ex) {

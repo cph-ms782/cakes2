@@ -22,14 +22,17 @@ public class recipeDTO {
     private String instructions;
     private String ratings;
     List<ingredientDTO> ingredients;
+    private imageDTO image;
 
-    public recipeDTO(int id, String name, String instructions, String ratings, List<ingredientDTO> ingredients)
+    public recipeDTO(int id, String name, String instructions, String ratings,
+            List<ingredientDTO> ingredients, imageDTO image)
             {
         this.id = id;
         this.name = name;
         this.instructions = instructions;
         this.ratings = ratings;
         this.ingredients = ingredients;
+        this.image = image;
     }
 
     public int getId() {
@@ -51,4 +54,9 @@ public class recipeDTO {
     public List<ingredientDTO> getIngredients() {
         return ingredients;
     }
+
+    public imageDTO getImage() {
+        return image;
+    }
+    
 }
