@@ -61,8 +61,9 @@ public class recipeDAO {
                 if (s > 0) {
                     String query_ingr = "SELECT * FROM cakes.ingredients where `recipe_id` = " + s + ";";
                     ResultSet rs_ingredients = connector2.getConnection().createStatement().executeQuery(query_ingr);
+                    ingredients = new ArrayList();
                     while (rs_ingredients.next()) {
-                        ingredients = new ArrayList();
+                        
                         ingredients.add(new ingredientDTO(
                                 rs_ingredients.getInt("ingredients_id"),
                                 rs_ingredients.getInt("recipe_id"),
@@ -84,22 +85,4 @@ public class recipeDAO {
         return recipes;
     }
 
-//    public recipeDTO getRecipe(int id, String name, String ratings) {
-//
-//        String query = "SELECT * FROM `recipes`;";
-//        try {
-//            connector = new DB();
-//            ResultSet rs = connector.getConnection().createStatement().executeQuery(query);
-//            while (rs.next()) {
-//                recipes.add(new Frame(
-//                        rs.getString("quality"),
-//                        rs.getInt("frame_price")
-//                ));
-//                glassPrice = rsFrame.getInt("glass_price");
-//            }
-//        } catch (SQLException ex) {
-//
-//        }
-//        return new recipeDTO(id, name, instructions, ratings);
-//    }
 }
