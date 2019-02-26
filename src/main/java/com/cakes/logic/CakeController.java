@@ -21,6 +21,7 @@ public class CakeController {
 //    public ingredientDAO getIngredient();
 
     public List<recipeDTO> getRecipes() {
+                System.out.println("Brandstrup was here");
         return new recipeDAO().getRecipes();
     }
 }
