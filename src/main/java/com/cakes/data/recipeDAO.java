@@ -32,11 +32,13 @@ public class recipeDAO {
             connector = new DB();
             ResultSet rs = connector.getConnection().createStatement().executeQuery(query);
             while (rs.next()) {
+                        ingredients = new ArrayList();
                 recipe = new recipeDTO(
                         rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("instructions"),
-                        rs.getString("ratings")
+                        rs.getString("ratings"),
+                        ingredients
                 );
             }
         } catch (SQLException ex) {

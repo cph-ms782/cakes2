@@ -59,11 +59,10 @@ public class RecipesCommand extends Command {
             out.println("<h1>Opskrifter:</h1>");
             out.println("<br><br>");
             for (recipeDTO recipe : cc.getRecipes()) {
-                out.println("<li>" + recipe.getName() + "\n" +
-                        recipe.getInstructions() + "</li><br>");
-                out.println(recipe.getInstructions());
+                out.println("<h1>" + recipe.getName() + "</h1><br>"
+                        + "<h3>" + recipe.getInstructions() + "</h3><br>");
                 for (ingredientDTO ingr : recipe.getIngredients()) {
-                    out.println("<li>" + ingr.getAmount() +" " + ingr.getIngredient() + "</li><br><br><br>");
+                    out.println("<br><li>" + ingr.getAmount() + " " + ingr.getIngredient() + "</li><br>");
                 }
             }
             out.println("<body>");
