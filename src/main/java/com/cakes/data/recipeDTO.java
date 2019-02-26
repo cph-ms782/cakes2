@@ -23,8 +23,8 @@ public class recipeDTO {
     private String ratings;
     List<ingredientDTO> ingredients;
 
-    public recipeDTO(int id, String name, String instructions, String ratings,
-            List<ingredientDTO> ingredients) {
+    public recipeDTO(int id, String name, String instructions, String ratings, List<ingredientDTO> ingredients)
+            {
         this.id = id;
         this.name = name;
         this.instructions = instructions;
