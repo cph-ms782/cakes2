@@ -92,3 +92,4 @@ $RECYCLE.BIN/
 *.properties
 /TomCatGuideOne/TomCatGuideOne/target/
 /TestDB_Simple/target/
+/nbproject/
