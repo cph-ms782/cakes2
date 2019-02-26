@@ -21,13 +21,15 @@ public class recipeDTO {
     private String name;
     private String instructions;
     private String ratings;
-    List<String> ingredients = new ArrayList();
+    List<ingredientDTO> ingredients;
 
-    public recipeDTO(int id, String name, String instructions, String ratings) {
+    public recipeDTO(int id, String name, String instructions, String ratings,
+            List<ingredientDTO> ingredients) {
         this.id = id;
         this.name = name;
         this.instructions = instructions;
         this.ratings = ratings;
+        this.ingredients = ingredients;
     }
 
     public int getId() {
@@ -46,7 +48,7 @@ public class recipeDTO {
         return ratings;
     }
 
-    public List<String> getIngredients() {
+    public List<ingredientDTO> getIngredients() {
         return ingredients;
     }
 }

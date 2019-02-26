@@ -17,24 +17,43 @@ import java.util.List;
 public class recipeDAO {
 
     private DB connector = null;
+    private DB connector2 = null;
     private List<recipeDTO> recipes = new ArrayList();
+    private List<ingredientDTO> ingredients;
 
     public List<recipeDTO> getRecipes() {
 
         String query = "SELECT * FROM `recipes`;";
+
         try {
             connector = new DB();
+            connector2 = new DB();
             ResultSet rs = connector.getConnection().createStatement().executeQuery(query);
             while (rs.next()) {
+//                String query_ingr = "SELECT * FROM cakes.ingredients where `recipe_id` = 1;";
+                int s = rs.getInt("id");
+                if (s > 0) {
+                    String query_ingr = "SELECT * FROM cakes.ingredients where `recipe_id` = " + s + ";";
+                    ResultSet rs_ingredients = connector2.getConnection().createStatement().executeQuery(query_ingr);
+                    while (rs_ingredients.next()) {
+                        ingredients = new ArrayList();
+                        ingredients.add(new ingredientDTO(
+                                rs_ingredients.getInt("ingredients_id"),
+                                rs_ingredients.getInt("recipe_id"),
+                                rs_ingredients.getString("ingredient"),
+                                rs_ingredients.getString("amount")));
+                    }
+                }
                 recipes.add(new recipeDTO(
                         rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("instructions"),
-                        rs.getString("ratings")
+                        rs.getString("ratings"),
+                        ingredients
                 ));
             }
         } catch (SQLException ex) {
-
+            System.out.println("Fejl recipeDAO " + ex);
         }
         return recipes;
     }

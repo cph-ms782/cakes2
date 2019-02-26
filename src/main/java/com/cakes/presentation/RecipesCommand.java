@@ -5,6 +5,7 @@
  */
 package com.cakes.presentation;
 
+import com.cakes.data.ingredientDTO;
 import com.cakes.data.recipeDTO;
 import com.cakes.logic.CakeController;
 import java.io.IOException;
@@ -52,13 +53,18 @@ public class RecipesCommand extends Command {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Glarmesteren</title>");
+            out.println("<title>Opskrifter</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Opskrifter:</h1>");
             out.println("<br><br>");
             for (recipeDTO recipe : cc.getRecipes()) {
-                out.println("<li>" + recipe.getName() + "</li><br>");
+                out.println("<li>" + recipe.getName() + "\n" +
+                        recipe.getInstructions() + "</li><br>");
+                out.println(recipe.getInstructions());
+                for (ingredientDTO ingr : recipe.getIngredients()) {
+                    out.println("<li>" + ingr.getAmount() +" " + ingr.getIngredient() + "</li><br><br><br>");
+                }
             }
             out.println("<body>");
             out.println("</body>");

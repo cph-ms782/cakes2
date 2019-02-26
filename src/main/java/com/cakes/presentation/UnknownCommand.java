@@ -28,7 +28,7 @@ public class UnknownCommand extends Command {
             out.println("<title>Unknown</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Unknown command</h1>");
+            out.println("<h1>Unknown command UnknownCommand</h1>");
             out.println("</body>");
             out.println("</html>");
         }
