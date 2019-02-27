@@ -37,7 +37,7 @@ public class RecipesCommand extends Command {
     public void execute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String antalkager = request.getParameter("kager");
+        String cakename = request.getParameter("cake");
 //        int width = Integer.parseInt(request.getParameter("width"));
 //        String frameName = request.getParameter("framename");
         CakeController cc = new CakeController();
@@ -46,6 +46,10 @@ public class RecipesCommand extends Command {
 //        HttpSession session = request.getSession();
 //
 //        session.setAttribute("window", window);
+
+//          How to add links:
+//          "<a href=\"http://abcd.efg.com\" target=\"_blank\">http://abcd.efg.com</a>";
+
 
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -56,11 +60,16 @@ public class RecipesCommand extends Command {
             out.println("<title>Opskrifter</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Opskrifter:</h1>");
+            out.println("<h1><a href=\"http://localhost:8084/cakes2/cakes\" target=\"_self\">Opskrifter:</a></h1>");
             out.println("<br><br>");
             for (recipeDTO recipe : cc.getRecipes()) {
-                if (antalkager == null || antalkager.equals(recipe.getName())) {
-                    out.println("<h1>" + recipe.getName() + "</h1><br>"
+                if (cakename == null || cakename.equals(recipe.getName())) {
+//                    String link = "<a href=\"Control?name=" + recipe.getName() + "\"</a>";
+                    String recipeLink = "<a href=\"http://localhost:8084/cakes2/cakes?cake="
+                            + recipe.getName() 
+                            + "\" target=\"_self\">"
+                            + recipe.getName() + "</a>";
+                    out.println("<h1>" + recipeLink + "</h1><br>"
                             + "<h3>" + recipe.getInstructions() + "</h3><br>");
                     for (ingredientDTO ingr : recipe.getIngredients()) {
                         out.println("<br><li>" + ingr.getAmount() + " " + ingr.getIngredient() + "</li><br>");

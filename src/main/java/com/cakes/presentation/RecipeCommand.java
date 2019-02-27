@@ -31,7 +31,7 @@ public class RecipeCommand extends Command {
             throws ServletException, IOException {
 
         CakeController cc = new CakeController();
-        String recipeName = request.getParameter("name");
+        String recipeName = request.getParameter("cake");
 
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
