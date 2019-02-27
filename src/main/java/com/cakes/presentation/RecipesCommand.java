@@ -37,10 +37,8 @@ public class RecipesCommand extends Command {
     public void execute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-
         String cakename = request.getParameter("cake");
-//        int width = Integer.parseInt(request.getParameter("width"));
-//        String frameName = request.getParameter("framename");
+        
         CakeController cc = new CakeController();
 //        boolean valid = g.isValid(height, width);
 //        Window window = g.getWindow(height, width);
