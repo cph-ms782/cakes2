@@ -29,8 +29,7 @@ public class UnknownCommand extends Command {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Unknown command UnknownCommand</h1>");
-            String urle = "<img src=\"https://www.femina.dk/sites/femina.dk/files/media/article/pandekager.jpg\" width=\"175px\"/>";
-            out.println(urle);
+            out.println("<img src=\"data/sorbet.jpg\" width=\"175px\"/>");
             out.println("</body>");
             out.println("</html>");
         }

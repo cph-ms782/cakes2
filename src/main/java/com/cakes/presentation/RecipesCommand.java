@@ -38,8 +38,6 @@ public class RecipesCommand extends Command {
             throws ServletException, IOException {
 
         String antalkager = request.getParameter("kager");
-//        int width = Integer.parseInt(request.getParameter("width"));
-//        String frameName = request.getParameter("framename");
         CakeController cc = new CakeController();
 //        boolean valid = g.isValid(height, width);
 //        Window window = g.getWindow(height, width);
@@ -67,6 +65,7 @@ public class RecipesCommand extends Command {
                     }
                     String urle = "<img src=\"" + recipe.getImage().getImage() + "\"  width=\"250\"/>";
                     out.println(urle);
+                    out.println("<br><br><br><br>");
                 }
             }
             out.println("<body>");
