@@ -27,7 +27,9 @@ public class recipeDAO {
         String query 
                 = "SELECT *"
                 + "FROM `recipes`"
-                + "WHERE `name` = \""+recipeName+"\";";
+                + "INNER JOIN `images`"
+                + "ON images.`recipe_id` = recipes.`id`"
+                + "WHERE recipes.`name` = \""+recipeName+"\";";
         try {
             connector = new DB();
             ResultSet rs = connector.getConnection().createStatement().executeQuery(query);
@@ -39,7 +41,7 @@ public class recipeDAO {
                         rs.getString("instructions"),
                         rs.getString("ratings"),
                         ingredients,
-                        new imageDTO("",1)
+                        new imageDTO(rs.getString("image"),rs.getInt("recipe_id"))
                 );
             }
         } catch (SQLException ex) {
@@ -78,7 +80,7 @@ public class recipeDAO {
                         rs.getString("instructions"),
                         rs.getString("ratings"),
                         ingredients,
-                        new imageDTO(rs.getString("image"),rs.getInt("id"))
+                        new imageDTO(rs.getString("image"),rs.getInt("recipe_id"))
                 ));
             }
         } catch (SQLException ex) {
