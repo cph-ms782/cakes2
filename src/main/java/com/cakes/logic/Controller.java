@@ -5,7 +5,6 @@
  */
 package com.cakes.logic;
 
-import com.cakes.data.ingredientDAO;
 import com.cakes.data.recipeDAO;
 import com.cakes.data.recipeDTO;
 import java.util.List;
@@ -14,7 +13,7 @@ import java.util.List;
  *
  * @author martin
  */
-public class CakeController {
+public class Controller {
 
 //    public List<String> getIngredients();
 //

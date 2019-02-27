@@ -6,7 +6,7 @@
 package com.cakes.presentation;
 
 import com.cakes.data.recipeDTO;
-import com.cakes.logic.CakeController;
+import com.cakes.logic.Controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -30,7 +30,7 @@ public class RecipeCommand extends Command {
     public void execute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        CakeController cc = new CakeController();
+        Controller cc = new Controller();
         String recipeName = request.getParameter("cake");
 
         response.setContentType("text/html;charset=UTF-8");

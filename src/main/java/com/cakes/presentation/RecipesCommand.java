@@ -7,7 +7,7 @@ package com.cakes.presentation;
 
 import com.cakes.data.ingredientDTO;
 import com.cakes.data.recipeDTO;
-import com.cakes.logic.CakeController;
+import com.cakes.logic.Controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -39,7 +39,7 @@ public class RecipesCommand extends Command {
 
         String cakename = request.getParameter("cake");
         
-        CakeController cc = new CakeController();
+        Controller cc = new Controller();
 //        boolean valid = g.isValid(height, width);
 //        Window window = g.getWindow(height, width);
 //        HttpSession session = request.getSession();
